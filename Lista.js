@@ -93,7 +93,11 @@ const Lista = ({navigation}) => {
         return(
           <TouchableOpacity onPress={() => onPressItem(tarefa)}>
           <View style={styles.row}>
-            <Text>{tarefa.item.nome} - {tarefa.item.dataprogramada} - {tarefa.item.status} </Text>
+            {tarefa.item.status==='Finalizado'?
+            <Text style={{color:'black', fontSize: 20}}>{tarefa.item.nome} - {tarefa.item.dataprogramada} - <Text style={{color: 'green'}}>{tarefa.item.status}</Text></Text>
+            :tarefa.item.status==='Atrasado'?
+            <Text style={{color:'black', fontSize: 20}}>{tarefa.item.nome} - {tarefa.item.dataprogramada} - <Text style={{color: 'red'}}>{tarefa.item.status}</Text></Text>:
+            <Text style={{color:'black', fontSize: 20}}>{tarefa.item.nome} - {tarefa.item.dataprogramada} - <Text style={{color: 'yellow'}}>{tarefa.item.status}</Text></Text>}
           </View>
           </TouchableOpacity>
         )
@@ -110,7 +114,7 @@ const Lista = ({navigation}) => {
             </TouchableOpacity>
           </View>
             <Text style={styles.tituloLista}>Tarefas</Text>
-            <FlatList
+          <FlatList
             data={tarefas}
             renderItem={TextTarefa}
             keyExtractor={ tarefa => tarefa._id }
@@ -216,12 +220,14 @@ const styles = StyleSheet.create({
       paddingHorizontal: 15,
       flexDirection: 'row',
       justifyContent: 'space-between',
-      borderBottomWidth: 1,
-      borderBottomColor: 'white'
+      fontSize: 60,
+      backgroundColor: '#77B8D1',
+      marginBottom: 10,
+      borderRadius: 10,
     },
     container: {
       flex: 1,
-      borderColor: 'blue',
+      // borderColor: 'blue',
       borderWidth: 1,
       alignContent: 'center',
       justifyContent: 'center',
@@ -248,14 +254,14 @@ const styles = StyleSheet.create({
       fontWeight: 'bold',
       backgroundColor: '#F8F8FF',
       borderRadius: 10,
-      borderColor:"black",
+      borderColor:"#77B8D1",
       color:"black",
     },
-    button: {
-      borderColor: 'black',
+    button:{
+      borderColor: "#77B8D1",
       borderWidth: 1,
       borderRadius: 10,
-      backgroundColor: '#F8F8FF',
+      backgroundColor: '#77B8D1',
       width: 150,
       height: 40,
       alignItems: 'center',
@@ -263,9 +269,11 @@ const styles = StyleSheet.create({
       
     },
     buttonText:{
-      color:"#000",
+      color:"white",
       marginTop: 8,
-      fontWeight: 'bold'
+      fontWeight: 'bold',
+      textTransform: 'uppercase',
+      fontSize: 15
     },
     tituloLista:{
       fontSize: 25,

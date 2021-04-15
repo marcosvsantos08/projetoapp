@@ -13,10 +13,10 @@ const Cadastro = ({navigation}) => {
     // const { name } = route.params;
   const dataAtual = new Date()
   const diaAtual = dataAtual.getDate()
-  const mesAtual = dataAtual.getMonth()
+  const mesAtual = dataAtual.getMonth()+1
   const anoAtual = dataAtual.getFullYear()
     const [nomeTarefa, setNomeTarefa] = useState("");
-    const [dataprogramada, setDataprogramada] = useState(`${diaAtual}/${mesAtual}/${anoAtual}`);
+    const [dataprogramada, setDataprogramada] = useState(`${diaAtual}/0${mesAtual}/${anoAtual}`);
     const [status, setStatus] = useState("");
     const {getTarefa} = useContext(TarefaContext)
 
@@ -116,7 +116,8 @@ const styles = StyleSheet.create({
       height: 40,
       marginVertical: 10,
       fontWeight: 'bold',
-      borderColor:'black',
+      borderColor:'#77B8D1',
+      textTransform: 'uppercase',
       borderWidth: 1,
       borderRadius: 10,
       paddingLeft: 20,
@@ -125,19 +126,21 @@ const styles = StyleSheet.create({
       
     },
     button: {
-      borderColor: 'black',
+      borderColor: '#77B8D1',
       borderWidth: 1,
       borderRadius: 10,
-      backgroundColor: '#F8F8FF',
+      backgroundColor: '#77B8D1',
       width: 150,
       height: 40,
       alignItems: 'center',
       marginTop: 15,
     },
     buttonText:{
-      color:"black",
+      color:"white",
       marginTop: 8,
-      fontWeight: 'bold'
+      fontWeight: 'bold',
+      textTransform: 'uppercase',
+      fontSize: 15
     },
     cervejaNome: {
       borderColor: '#9e9e9e',
